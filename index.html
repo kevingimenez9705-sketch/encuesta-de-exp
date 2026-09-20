@@ -322,7 +322,7 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
 /* ============================================================
    1. Pegá acá la URL del Web App de Apps Script (termina en /exec)
    ============================================================ */
-const APPS_SCRIPT_URL = "const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmXXzefJfmgSRXRK-sOBAESvLBg3dc6nYRuPbuWz74cCNbdS9lJdEiMHXdB5mi7YDLTA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyw23BlVlG7vf63hVuHYB0o9J3c2leZlDtBxTafKMsbNK98le-uBv-95oftDUws1VgP/exec";
 
 const LOCALES = {
   'Hamburguesas Extremas': {
@@ -481,7 +481,11 @@ function pintarContactos() {
   });
 }
 
-/* --- envío --- */
+/* --- envío ---
+   Primero intenta un POST normal para poder LEER la respuesta del script
+   (así, si algo falla, queda el motivo en la consola del navegador).
+   Si el navegador bloquea la lectura por CORS, reintenta en modo no-cors,
+   que igual entrega los datos aunque no devuelva respuesta. */
 async function enviar() {
   const btn = document.getElementById('send');
   btn.disabled = true;
@@ -490,19 +494,30 @@ async function enviar() {
     mejoras: respuestas.mejoras.length ? respuestas.mejoras.join(' | ') : 'S/D',
     enviado: new Date().toISOString()
   });
-  if (APPS_SCRIPT_URL) {
+  const cuerpo = {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  };
+
+  if (!APPS_SCRIPT_URL) {
+    console.warn('⚠️ Falta cargar APPS_SCRIPT_URL. Respuestas:', payload);
+    go(steps.length - 1);
+    return;
+  }
+
+  try {
+    const r = await fetch(APPS_SCRIPT_URL, cuerpo);
+    const txt = await r.text();
+    console.log('✅ Respuesta del script:', txt);
+  } catch (e) {
+    console.warn('CORS bloqueó la lectura, reintentando en no-cors:', e);
     try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      });
-    } catch (e) {
-      console.error('No se pudo enviar:', e);
+      await fetch(APPS_SCRIPT_URL, Object.assign({ mode: 'no-cors' }, cuerpo));
+      console.log('✅ Enviado en modo no-cors (sin confirmación de lectura).');
+    } catch (e2) {
+      console.error('❌ No se pudo enviar:', e2);
     }
-  } else {
-    console.log('Respuestas (falta cargar APPS_SCRIPT_URL):', payload);
   }
   go(steps.length - 1);
 }
