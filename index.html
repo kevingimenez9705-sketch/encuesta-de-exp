@@ -151,7 +151,7 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     <div class="seal">🔒 Confidencial · no lleva tu nombre</div>
     <div class="emoji-big">👋</div>
     <h1>Contanos cómo fue tu experiencia</h1>
-    <p>Son <strong>10 preguntas rápidas</strong> ⚡ y te lleva menos de 2 minutos.</p>
+    <p>Son <strong>12 preguntas rápidas</strong> ⚡ y te lleva menos de 2 minutos.</p>
     <p>Las recibe solo el equipo de <strong>Recursos Humanos</strong>. 🙅 No se comparten con el local ni con tus responsables.</p>
     <p>No hay respuestas buenas ni malas 💬 lo que nos contás sirve para mejorar.</p>
     <div class="actions">
@@ -185,8 +185,30 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 3 · MARCA -->
+  <!-- 3 · EDAD -->
   <section class="step" data-step="3">
+    <div class="emoji-big">🎂</div>
+    <h2>¿Cuál es tu edad?</h2>
+    <div class="opts" data-q="edad">
+      <button class="opt" data-val="18 a 22 años"><span class="em">🧒</span> 18 a 22 años</button>
+      <button class="opt" data-val="23 a 28 años"><span class="em">🧑</span> 23 a 28 años</button>
+      <button class="opt" data-val="29 a 32 años"><span class="em">🧔</span> 29 a 32 años</button>
+      <button class="opt" data-val="Más de 32 años"><span class="em">🧓</span> Más de 32 años</button>
+    </div>
+  </section>
+
+  <!-- 4 · EXPERIENCIA PREVIA -->
+  <section class="step" data-step="4">
+    <div class="emoji-big">🍟</div>
+    <h2>¿Tenías experiencia previa en fast-food?</h2>
+    <div class="opts two" data-q="experiencia">
+      <button class="opt" data-val="Sí"><span class="em">👍</span> Sí</button>
+      <button class="opt" data-val="No"><span class="em">🆕</span> No, es mi primera vez</button>
+    </div>
+  </section>
+
+  <!-- 5 · MARCA -->
+  <section class="step" data-step="5">
     <div class="emoji-big">🏪</div>
     <h2>¿En qué marca trabajás?</h2>
     <div class="opts two" data-q="marca">
@@ -195,8 +217,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 4 · ZONA Y LOCAL -->
-  <section class="step" data-step="4">
+  <!-- 6 · ZONA Y LOCAL -->
+  <section class="step" data-step="6">
     <div class="emoji-big">📍</div>
     <h2>¿Dónde trabajás?</h2>
     <p class="hint">Nos sirve para saber en qué zona mejorar. Seguís siendo anónimo/a. 🔒</p>
@@ -226,8 +248,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 5 · ENTRENAMIENTO -->
-  <section class="step" data-step="5">
+  <!-- 7 · ENTRENAMIENTO -->
+  <section class="step" data-step="7">
     <div class="emoji-big">🧑‍🏫</div>
     <h2>¿Cómo fue tu entrenamiento?</h2>
     <p class="hint">Pensá en cómo te enseñaron las tareas durante tus primeros días.</p>
@@ -239,8 +261,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 6 · TRATO -->
-  <section class="step" data-step="6">
+  <!-- 8 · TRATO -->
+  <section class="step" data-step="8">
     <div class="emoji-big">🤝</div>
     <h2>¿Cómo sentís que fue el trato dentro del local?</h2>
     <p class="hint">El trato de tu Gerente, Encargado/a, Entrenador/a y compañeros.</p>
@@ -252,8 +274,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 7 · INCONVENIENTE -->
-  <section class="step" data-step="7">
+  <!-- 9 · INCONVENIENTE -->
+  <section class="step" data-step="9">
     <div class="emoji-big">🔎</div>
     <h2>¿Sucedió algo que no te agradó?</h2>
     <p class="hint">Puede ser una situación puntual, un comentario o algo del trato que recibiste.</p>
@@ -263,8 +285,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 8 · CONTACTOS -->
-  <section class="step" data-step="8">
+  <!-- 10 · CONTACTOS -->
+  <section class="step" data-step="10">
     <div class="emoji-big">💬</div>
     <h2>Si querés, contanos directamente</h2>
     <p class="hint">Escribile por WhatsApp al equipo de Selección de tu zona. Te escuchamos y queda entre nosotros. 🤐</p>
@@ -274,8 +296,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 9 · GENERAL -->
-  <section class="step" data-step="9">
+  <!-- 11 · GENERAL -->
+  <section class="step" data-step="11">
     <div class="emoji-big">⭐</div>
     <h2>En general, ¿cómo fue tu experiencia en el local?</h2>
     <div class="opts" data-q="general">
@@ -287,8 +309,8 @@ select.ok{border-color:var(--verde);background:var(--verde-soft)}
     </div>
   </section>
 
-  <!-- 10 · MEJORAS -->
-  <section class="step" data-step="10">
+  <!-- 12 · MEJORAS -->
+  <section class="step" data-step="12">
     <div class="emoji-big">🛠️</div>
     <h2>¿Qué podríamos mejorar en el local?</h2>
     <p class="hint">Podés elegir más de una opción. 👇</p>
@@ -364,7 +386,7 @@ const btnUbic = document.getElementById('okUbicacion');
 let i = 0;
 
 const respuestas = {
-  rol:'S/D', antiguedad:'S/D', marca:'S/D', zona:'S/D', local:'S/D',
+  rol:'S/D', antiguedad:'S/D', edad:'S/D', experiencia:'S/D', marca:'S/D', zona:'S/D', local:'S/D',
   entrenamiento:'S/D', trato:'S/D', inconveniente:'S/D',
   contacto:'S/D', general:'S/D', mejoras:[]
 };
